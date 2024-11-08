@@ -10,13 +10,15 @@ app.use(bodyParser.json());
 const cors = require('cors');
 // Enable CORS for all origins
 app.use(cors());
+console.log(process.env.email);  // Check if this logs the correct email address
+console.log(process.env.password); // Check if this logs the correct password
 
 // Nodemailer setup using environment variables
 const transporter = nodemailer.createTransport({
     service: 'gmail',  // Use your email provider
     auth: {
-        user: process.env.EMAIL_ADDRESS,        // Get email address from environment variable
-        pass: process.env.EMAIL_PASSWORD         // Get email password from environment variable
+        user: process.env.email,        // Get email address from environment variable
+        pass: process.env.password         // Get email password from environment variable
     }
 });
 
@@ -25,7 +27,7 @@ app.post('/send-order-email', (req, res) => {
     const { email, quantity, country, state, city, doorNo, address, phoneNumber } = req.body;
 
     const mailOptions = {
-        from: process.env.EMAIL_ADDRESS,  // Use email address from environment variable
+        from: process.env.email,  // Use email address from environment variable
         to: email,
         subject: 'Your Order Confirmation from Pure Banana India',
         text: `
