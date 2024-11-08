@@ -1,0 +1,62 @@
+# Ignore Node.js dependencies
+/node_modules
+/backend/node_modules
+/frontend/node_modules
+
+# Ignore environment files
+.env
+/backend/.env
+/frontend/.env
+
+# Ignore build and log files
+/dist
+/build
+/logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore IDE or editor configuration files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore compiled or temporary files
+*.tmp
+*.swp
+*.bak
+*.pid
+*.seed
+*.pid.lock
+
+# Ignore cache or temporary files
+/cache
+/tmp
+/backend/cache
+/backend/tmp
+/frontend/cache
+/frontend/tmp
+
+# Ignore other sensitive files
+*.pem
+*.crt
+*.key
+
+# Ignore coverage reports
+/coverage
+/backend/coverage
+/frontend/coverage
+
+# Ignore front-end build files (if applicable)
+frontend/build
+frontend/dist
+
+# Ignore public assets (if using a build system that outputs files here)
+public/assets
+public/js/*.map
+public/css/*.map
