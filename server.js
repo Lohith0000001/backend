@@ -1,3 +1,5 @@
+require('dotenv').config();  // Import dotenv to use environment variables
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
@@ -9,27 +11,21 @@ const cors = require('cors');
 // Enable CORS for all origins
 app.use(cors());
 
-// Nodemailer setup
+// Nodemailer setup using environment variables
 const transporter = nodemailer.createTransport({
     service: 'gmail',  // Use your email provider
     auth: {
-        user: 'purebananaindia@gmail.com',        // Your email address
-        pass: 'aoqx hhjj vxkc qxhu'          // Your email password or app-specific password
+        user: process.env.EMAIL_ADDRESS,        // Get email address from environment variable
+        pass: process.env.EMAIL_PASSWORD         // Get email password from environment variable
     }
 });
-
-// // Route to handle order submission and email confirmation
-// app.get('/', (req, res) => {
-//     res.send('Server is alive');
-// });
-
 
 // Route to handle order submission and email confirmation
 app.post('/send-order-email', (req, res) => {
     const { email, quantity, country, state, city, doorNo, address, phoneNumber } = req.body;
 
     const mailOptions = {
-        from: 'purebananaindia@gmail.com',
+        from: process.env.EMAIL_ADDRESS,  // Use email address from environment variable
         to: email,
         subject: 'Your Order Confirmation from Pure Banana India',
         text: `
